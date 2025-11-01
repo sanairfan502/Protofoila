@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sana | Personal Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #ff69b4; /* pink */
+      --secondary-color: #32cd32; /* green */
+      --bg-color: #fff;
+      --text-color: #333;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .about {
+      text-align: center;
+    }
+
+    .about img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--secondary-color);
+      margin-bottom: 1rem;
+      transition: transform 0.4s;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .about img:hover {
+      transform: scale(1.1);
+    }
+
+    .about p {
+      animation: slideIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideIn {
+      from {transform: translateY(30px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    .skills {
+      background: #f8f8f8;
+      border-radius: 15px;
+      padding: 2rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .skill-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 1.3rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .skill.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.8s ease;
+    }
+
+    .skill:hover {
+      background: var(--secondary-color);
+      transform: translateY(-5px);
+    }
+
+    .skill strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      animation: fadeIn 2s ease;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h3 {
+      color: var(--primary-color);
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: auto;
+      gap: 1rem;
+      animation: slideIn 1.5s ease;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 2px solid var(--primary-color);
+      outline: none;
+    }
+
+    button {
+      background: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--primary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--primary-color);
+      color: white;
+      margin-top: 2rem;
+      animation: fadeIn 2s ease;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sana Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button onclick="toggleMode()">🌙</button>
+    </nav>
+  </header>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <img src="https://www.google.com/imgres?q=girl%20picture%20profile&imgurl=https%3A%2F%2Fphotosly.in%2Fwp-content%2Fuploads%2F2024%2F07%2Fgirl-dp-2.jpg&imgrefurl=https%3A%2F%2Fphotosly.in%2Fgirls-dp%2F&docid=tQptt2oSxk914M&tbnid=WAxhry-VpYuyvM&vet=12ahUKEwjVtp3ZudGQAxXSRKQEHVXbE0M4ChAzegQIZBAA..i&w=736&h=920&hcb=2&ved=2ahUKEwjVtp3ZudGQAxXSRKQEHVXbE0M4ChAzegQIZBAA" alt="Sana Photo">
+    <p>👋 Hello! I’m <b>Sana</b>, a passionate <b>Computer Science student</b> from <b>Ali Pur Chattha</b>.  
+    I love coding, designing, and learning new technologies to build creative, modern, and responsive websites.  
+    My goal is to become a professional web developer who crafts beautiful and user-friendly experiences. 🌸</p>
+  </section>
+
+  <!-- Updated Skills Section -->
+  <section id="skills" class="skills">
+    <h2>My Skills</h2>
+    <div class="skill-list">
+
+      <div class="skill">
+        <strong>Programming & Coding</strong>
+        Proficient in languages like <b>Python</b>, <b>Java</b>, and <b>C++</b> for creating efficient and logical solutions.
+      </div>
+
+      <div class="skill">
+        <strong>Algorithms & Data Structures</strong>
+        Deep understanding of organizing, storing, and manipulating data efficiently to optimize performance.
+      </div>
+
+      <div class="skill">
+        <strong>Software Development</strong>
+        Skilled in designing, building, and maintaining <b>high-quality software systems</b> with clean and modular code.
+      </div>
+
+      <div class="skill">
+        <strong>Database Management</strong>
+        Experience in <b>MySQL</b>, <b>SQL Server</b>, and <b>MongoDB</b> for storing and retrieving data efficiently.
+      </div>
+
+      <div class="skill">
+        <strong>Cloud Computing</strong>
+        Knowledge of <b>AWS</b>, <b>Azure</b>, and <b>Google Cloud</b> to deploy and manage applications at scale.
+      </div>
+
+      <div class="skill">
+        <strong>Cybersecurity</strong>
+        Understanding of protecting networks, systems, and data from cyber threats and unauthorized access.
+      </div>
+
+      <div class="skill">
+        <strong>Data Analysis & Data Science</strong>
+        Ability to analyze large datasets, generate insights, and visualize data using <b>Python (Pandas, Matplotlib)</b>.
+      </div>
+
+      <div class="skill">
+        <strong>Artificial Intelligence & Machine Learning</strong>
+        Hands-on knowledge of <b>AI models</b> and <b>machine learning algorithms</b> that help computers learn from data.
+      </div>
+
+      <div class="skill">
+        <strong>Web Development</strong>
+        Creating responsive, user-friendly websites using <b>HTML5</b>, <b>CSS3</b>, and <b>JavaScript</b>.
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A personal website showcasing my skills and projects with a responsive design.</p>
+      </div>
+      <div class="project-card">
+        <h3>E-commerce Store</h3>
+        <p>A stylish online store using HTML, CSS, and JS for product display and cart simulation.</p>
+      </div>
+      <div class="project-card">
+        <h3>Todo App</h3>
+        <p>A simple and interactive to-do list app built with JavaScript.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Created with 💚 & 💖 by Sana | © 2025</p>
+  </footer>
+
+  <script>
+    // Dark/Light Mode Toggle
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    // Skill animation on scroll
+    const skills = document.querySelectorAll('.skill');
+    window.addEventListener('scroll', () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      skills.forEach(skill => {
+        const skillTop = skill.getBoundingClientRect().top;
+        if (skillTop < triggerBottom) {
+          skill.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
